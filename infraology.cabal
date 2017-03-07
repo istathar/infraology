@@ -21,7 +21,7 @@ library
 
   hs-source-dirs:    lib
 
-  exposed-modules:   Infrastructure.Hardware
+  exposed-modules:   Infrastructure.Topology
   other-modules:     Infrastructure.Types
 
   ghc-options:       -O2
