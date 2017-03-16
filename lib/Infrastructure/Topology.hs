@@ -1,9 +1,9 @@
 module Infrastructure.Topology 
 (
-      Role
-    , DataCenter
+      Role(..)
+    , DataCenter(..)
     , Rack(..)
-    , Server
+    , Server(..)
 )
 where
 

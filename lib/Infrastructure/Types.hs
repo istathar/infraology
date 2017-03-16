@@ -4,7 +4,7 @@
 
 module Infrastructure.Types where
 
-class Show a => Role a where
+class Role a where
     role :: a -> String
 
 data DataCenter = Site String [Rack]
@@ -14,7 +14,7 @@ data Rack = Rack Int [Server]
     deriving Show
 
 data Server where
-    Server :: Role a => Int -> a -> Server
+    Server :: (Role a, Show a) => Int -> a -> Server
     Null :: Server
 
 deriving instance Show Server
