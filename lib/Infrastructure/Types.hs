@@ -1,18 +1,21 @@
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE StandaloneDeriving #-}
+{-# OPTIONS_HADDOCK hide, not-home #-}
+
 module Infrastructure.Types where
 
-import Data.HashMap.Strict (HashMap)
-import Data.Text (Text)
+class Show a => Role a where
+    role :: a -> String
 
-type Name = Text
-type Version = Text      -- TODO use versions package
+data DataCenter = Site String [Rack]
+    deriving Show
 
-type Key = Text
-type Value = Text
+data Rack = Rack Int [Server]
+    deriving Show
 
-data Config = Config {
-    configSchema  :: Name,
-    configVersion :: Version,
-    configPairs   :: HashMap Key Value
-} deriving Show
+data Server where
+    Server :: Role a => Int -> a -> Server
+    Null :: Server
 
+deriving instance Show Server
 

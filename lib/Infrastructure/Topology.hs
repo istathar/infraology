@@ -1,2 +1,10 @@
-module Infrastructure.Topology where
+module Infrastructure.Topology 
+(
+      Role
+    , DataCenter
+    , Rack(..)
+    , Server
+)
+where
 
+import Infrastructure.Types
