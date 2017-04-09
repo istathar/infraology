@@ -1,5 +1,5 @@
 cabal-version:       >= 1.10
-name:                infraology
+name:                infraistory
 version:             0.1.1
 synopsis:            Describing the evolution of infrastructure
 license:             BSD3
@@ -44,7 +44,7 @@ test-suite           check
                      HUnit,
                      hspec,
                      text,
-                     infraology
+                     infraistory
 
   hs-source-dirs:    tests
   main-is:           CheckProgram.hs
@@ -56,14 +56,14 @@ executable           snippet
                      bytestring,
                      unordered-containers,
                      text,
-                     infraology
+                     infraistory
 
   ghc-options:       -threaded
                      -Wall
                      -Wwarn
                      -fwarn-tabs
 
-  hs-source-dirs:    tests
+  hs-source-dirs:    tests,examples
   main-is:           Snippet.hs
                       
 -- vim: set tabstop=21 expandtab:

@@ -3,6 +3,9 @@
 
 module Main where
 
+import Infrastructure.Topology
+import ObjectStorageCluster
+
 main :: IO ()
 main = do
-    putStrLn "Hello World"
+    putStrLn (show syd3)
