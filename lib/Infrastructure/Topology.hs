@@ -4,6 +4,7 @@ module Infrastructure.Topology
     , DataCenter(..)
     , Rack(..)
     , Server(..)
+    , Host(..)
 )
 where
 

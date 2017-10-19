@@ -1,6 +1,8 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE StandaloneDeriving #-}
 
+module ObjectStorageCluster where
+
 
 import Infrastructure.Topology
 
@@ -19,30 +21,36 @@ rack2 = Rack 2 [monitor2, storage6, storage7, storage8, storage9, storage10]
 rack3 = Rack 3 [monitor3, storage11, storage12, storage13, storage14, storage15]
 
 monitor1 :: Server
-monitor1 = Server 1 CephMonitor
-monitor2 = Server 2 CephMonitor
-monitor3 = Server 3 CephMonitor
+monitor1 = Server (Monitor 1)
+monitor2 = Server (Monitor 2)
+monitor3 = Server (Monitor 3)
 
 storage1 :: Server
-storage1 = Server 1 CephObjectStorage
-storage2 = Server 2 CephObjectStorage
-storage3 = Server 3 CephObjectStorage
-storage4 = Server 4 CephObjectStorage
-storage5 = Server 5 CephObjectStorage
-storage6 = Server 6 CephObjectStorage
-storage7 = Server 7 CephObjectStorage
-storage8 = Server 8 CephObjectStorage
-storage9 = Server 9 CephObjectStorage
-storage10 = Server 10 CephObjectStorage
-storage11 = Server 11 CephObjectStorage
-storage12 = Server 12 CephObjectStorage
-storage13 = Server 13 CephObjectStorage
-storage14 = Server 14 CephObjectStorage
-storage15 = Server 15 CephObjectStorage
+storage1 = Server (ObjectStorage 1)
+storage2 = Server (ObjectStorage 2)
+storage3 = Server (ObjectStorage 3)
+storage4 = Server (ObjectStorage 4)
+storage5 = Server (ObjectStorage 5)
+storage6 = Server (ObjectStorage 6)
+storage7 = Server (ObjectStorage 7)
+storage8 = Server (ObjectStorage 8)
+storage9 = Server (ObjectStorage 9)
+storage10 = Server (ObjectStorage 10)
+storage11 = Server (ObjectStorage 11)
+storage12 = Server (ObjectStorage 12)
+storage13 = Server (ObjectStorage 13)
+storage14 = Server (ObjectStorage 14)
+storage15 = Server (ObjectStorage 15)
 
-data CephCluster = CephMonitor | CephObjectStorage | CephMetadataServer
+data CephCluster = Monitor Int | ObjectStorage Int | MetadataServer Int
     deriving Show
 
 instance Role CephCluster where
     role x = show x
+
+instance Host CephCluster where
+    hostname x = case x of
+        (Monitor n)        -> "monitor" ++ show n
+        (ObjectStorage n)  -> "storage" ++ show n
+        (MetadataServer n) -> "metadata" ++ show n
 

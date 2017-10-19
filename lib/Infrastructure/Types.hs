@@ -14,8 +14,10 @@ data Rack = Rack Int [Server]
     deriving Show
 
 data Server where
-    Server :: (Role a, Show a) => Int -> a -> Server
+    Server :: (Role a, Show a) => a -> Server
     Null :: Server
 
 deriving instance Show Server
 
+class Host a where
+    hostname :: a -> String
