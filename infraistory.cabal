@@ -17,7 +17,8 @@ library
 
   build-depends:     base,
                      unordered-containers,
-                     text
+                     text,
+                     dhall
 
   hs-source-dirs:    lib
 
